@@ -499,20 +499,15 @@ class TestResponse implements ArrayAccess
     }
 
     /**
-     * Assert that the expected value exists at the given path in the response.
+     * Assert that the expected value and type exists at the given path in the response.
      *
      * @param  string  $path
      * @param  mixed  $expect
-     * @param  bool  $strict
      * @return $this
      */
-    public function assertJsonPath($path, $expect, $strict = false)
+    public function assertJsonPath($path, $expect)
     {
-        if ($strict) {
-            PHPUnit::assertSame($expect, $this->json($path));
-        } else {
-            PHPUnit::assertEquals($expect, $this->json($path));
-        }
+        PHPUnit::assertSame($expect, $this->json($path));
 
         return $this;
     }
